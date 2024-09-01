@@ -6,15 +6,15 @@ RUN apt update; \
     groupadd -g 10001 app; \
     useradd -u 10000 -g app app; \
     mkdir /app && mkdir /home/app; \
-    chown app:app /app && chown app:app /home/app;
+    chown app:app /home/app;
 
 WORKDIR /app
 
+USER app:app
+
 COPY istio-test/ ./
 
-RUN /opt/poetry/bin/poetry install
-
-USER app:app
+RUN chown -R app:app /app && /opt/poetry/bin/poetry install
 
 EXPOSE 8080
 
