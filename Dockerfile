@@ -1,4 +1,4 @@
-FROM pfeiffermax/python-poetry:1.11.0-poetry1.8.3-python3.12.3-bookworm
+FROM pfeiffermax/python-poetry:1.11.0-poetry1.8.3-python3.12.3-bookworm as build-stage
 
 RUN apt update; \
     apt upgrade -y; \
@@ -15,6 +15,14 @@ USER app:app
 COPY istio-test/ ./
 
 RUN  /opt/poetry/bin/poetry install
+
+FROM pfeiffermax/python-poetry:1.11.0-poetry1.8.3-python3.12.3-bookworm as production-image
+
+ENV PATH="/opt/poetry/bin:$PATH"
+
+COPY --from=build-stage /app /app
+
+COPY --from=build-stage /home/app /home/app
 
 EXPOSE 8080
 
