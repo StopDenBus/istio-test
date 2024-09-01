@@ -5,7 +5,8 @@ RUN apt update; \
     apt install -y curl; \
     pip3 install poetry; \
     groupadd -g 10001 app; \
-    useradd -u 10000 -g app app;
+    useradd -u 10000 -g app app; \
+    mkdir /app && chown app:app /app;
 
 ENV POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=1 \
