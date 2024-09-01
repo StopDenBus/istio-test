@@ -5,11 +5,14 @@ RUN apt update; \
     apt install -y curl; \
     groupadd -g 10001 app; \
     useradd -u 10000 -g app app; \
-    mkdir /app && chown app:app /app;
+    mkdir /app && mkdir /home/app; \
+    chown app:app /app && chown app:app /home/app;
 
 WORKDIR /app
 
-COPY istio-test/ ./istio-test
+COPY istio-test/ ./
+
+RUN /opt/poetry/bin/poetry install
 
 USER app:app
 
