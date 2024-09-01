@@ -49,7 +49,7 @@ jobs:
       - name: Delete old versions
         uses: actions/delete-package-versions@v5
         with:
-          package-name: 'istio-test'
+          package-name: 'istio-test/istio-test'
           package-type: 'container'
           min-versions-to-keep: 2      
 
