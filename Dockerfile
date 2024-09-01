@@ -1,4 +1,4 @@
-FROM 1.11.0-poetry1.8.3-python3.12.3-bookworm
+FROM pfeiffermax/python-poetry:1.11.0-poetry1.8.3-python3.12.3-bookworm
 
 RUN apt update; \
     apt upgrade -y; \
