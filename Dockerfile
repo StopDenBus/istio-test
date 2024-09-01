@@ -3,8 +3,8 @@ FROM python:3.12-slim-bookworm
 RUN apt update; \
     apt upgrade -y; \
     apt install pipx; \
-    pipx ensurepath; \
-    pipx install poetry;
+    /usr/bin/pipx ensurepath; \
+    /usr/bin/pipx install poetry;
 
 EXPOSE 8080
 
