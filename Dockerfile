@@ -1,9 +1,8 @@
 FROM python:3.12-slim-bookworm
 
 RUN apt update; \
-    # apt upgrade -y; \
+    apt upgrade -y; \
     pip3 install poetry; \
-    whereis poetry; \
     groupadd -g 10001 app; \
     useradd -u 10000 -g app app;
 
