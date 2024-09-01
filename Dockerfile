@@ -2,6 +2,7 @@ FROM python:3.12-slim-bookworm
 
 RUN apt update; \
     apt upgrade -y; \
+    apt install -y curl; \
     pip3 install poetry; \
     groupadd -g 10001 app; \
     useradd -u 10000 -g app app;
